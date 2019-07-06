@@ -40,7 +40,8 @@ ansible-playbook \
 ```
 
 * Change IP `123.123.123.123` to your server's IP address (keep character "`,`").
-* Replace `admin_user` value with YOURNAME (if needed).
+* Replace `admin_user` value with your name (if needed).
+* Replace `admin_password` value with your password (use a strong password). This password used for `sudo` command.
 * Replace `public_key_path` value with your public key path.
 * Replace `ssh_port` value with any other allowed number (due to security reasons).
 
