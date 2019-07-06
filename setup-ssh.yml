@@ -1,0 +1,43 @@
+- name: Setup SSH
+  hosts: all
+  become: true
+  tasks:
+    - name: "Add a new user named {{ admin_username }}"
+      user:
+        name: "{{ admin_username }}"
+        shell: /bin/bash
+        password: "{{ admin_password | password_hash('sha512') }}"
+    - name: "Add {{ admin_username }} user to the sudoers"
+      copy:
+        dest: "/etc/sudoers.d/{{ admin_username }}"
+        content: "{{ admin_username }} ALL=(ALL) ALL"
+    - name: Deploy SSH key
+      authorized_key: "user={{ admin_username }} key=\"{{ lookup('file', public_key_path) }}\" state=present"
+    - name: Disable password authentication
+      lineinfile:
+        dest=/etc/ssh/sshd_config
+        regexp='^PasswordAuthentication'
+        line="PasswordAuthentication no"
+        state=present
+        backup=yes
+    - name: Change default SSH port
+      lineinfile:
+        dest=/etc/ssh/sshd_config
+        regexp='^Port'
+        line="Port {{ ssh_port }}"
+        state=present
+        backup=yes
+    - name: Disable Root Login
+      lineinfile:
+        dest=/etc/ssh/sshd_config
+        regexp='^PermitRootLogin'
+        line="PermitRootLogin no"
+        state=present
+        backup=yes
+      notify:
+       - restart ssh
+  handlers:
+    - name: restart ssh
+      service:
+        name=sshd
+        state=restarted
