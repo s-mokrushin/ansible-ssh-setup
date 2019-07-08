@@ -86,4 +86,4 @@ PLAY RECAP *********************************************************************
 ssh -p 22222 -i /path/to/key admin@123.123.123.123
 ```
 
-And run `sudo su` with you password for testing root access.
+And run `sudo su` with your password for testing root access.
