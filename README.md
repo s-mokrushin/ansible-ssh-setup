@@ -13,6 +13,7 @@ What the playbook does:
 
 * Ansible (tested on version 2.8.1)
 * Root's password to destination server
+* Server's distro must support `sudo` command.
 
 *Notice* &mdash; No any additional configurations like inventory file or `ansible.cfg`.
 
