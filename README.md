@@ -47,8 +47,43 @@ ansible-playbook \
 
 2. Run the command. Enter `root`'s password.
 
+Example output:
+
+```bash
+PLAY [Setup SSH] ***************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [123.123.123.123]
+
+TASK [Add a new user named admin] **********************************************
+changed: [123.123.123.123]
+
+TASK [Add admin user to the sudoers] *******************************************
+changed: [123.123.123.123]
+
+TASK [Deploy SSH key] **********************************************************
+changed: [123.123.123.123]
+
+TASK [Disable password authentication] *****************************************
+changed: [123.123.123.123]
+
+TASK [Change default SSH port] *************************************************
+changed: [123.123.123.123]
+
+TASK [Disable Root Login] ******************************************************
+changed: [123.123.123.123]
+
+RUNNING HANDLER [restart ssh] **************************************************
+changed: [123.123.123.123]
+
+PLAY RECAP *********************************************************************
+123.123.123.123               : ok=8    changed=7    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+```
+
 ## Test it with a new connection
 
 ```bash
 ssh -p 22222 -i /path/to/key admin@123.123.123.123
 ```
+
+And run `sudo su` with you password for testing root access.
