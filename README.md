@@ -29,7 +29,13 @@ This command will create two files: private key (without extension) and public k
 
 ## Run a command
 
-1. Prepare the command with your arguments.
+1. Download the playbook.
+
+```bash
+wget https://raw.githubusercontent.com/neverwet/ansible-ssh-setup/master/setup-ssh.yml -o setup-ssh.yml
+```
+
+2. Prepare the command with your arguments.
 
 ```bash
 ansible-playbook \
@@ -46,7 +52,7 @@ ansible-playbook \
 * Replace `public_key_path` value with your public key path.
 * Replace `ssh_port` value with any other allowed number (due to security reasons).
 
-2. Run the command. Enter `root`'s password.
+3. Run the command. Enter `root`'s password.
 
 Example output:
 
