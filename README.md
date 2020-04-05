@@ -32,7 +32,7 @@ This command will create two files: private key (without extension) and public k
 1. Download the playbook.
 
 ```bash
-wget https://raw.githubusercontent.com/neverwet/ansible-ssh-setup/master/setup-ssh.yml -o setup-ssh.yml
+wget https://raw.githubusercontent.com/neverwet/ansible-ssh-setup/master/setup-ssh.yml -O setup-ssh.yml
 ```
 
 2. Prepare the command with your arguments.
